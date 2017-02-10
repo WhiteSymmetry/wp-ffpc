@@ -135,7 +135,6 @@ class WP_FFPC extends WP_FFPC_ABSTRACT {
 			'apcu' => __( 'APCu' , 'wp-ffpc'),
 			'memcache' => __( 'PHP Memcache' , 'wp-ffpc'),
 			'memcached' => __( 'PHP Memcached' , 'wp-ffpc'),
-			'redis' => __( 'Redis (experimental, it will break!)' , 'wp-ffpc'),
 		);
 		/* check for required functions / classes for the cache types */
 
@@ -144,7 +143,6 @@ class WP_FFPC extends WP_FFPC_ABSTRACT {
 			'apcu' => function_exists( 'apcu_cache_info' ) ? true : false,
 			'memcache' => class_exists ( 'Memcache') ? true : false,
 			'memcached' => class_exists ( 'Memcached') ? true : false,
-			'redis' => class_exists( 'Redis' ) ? true : false,
 		);
 
 		/* invalidation method possible values array */
@@ -408,18 +406,18 @@ class WP_FFPC extends WP_FFPC_ABSTRACT {
 		if( ! function_exists( 'current_user_can' ) || ! current_user_can( 'manage_options' ) ){
 			die( );
 		}
-    
+
 		/* woo_commenrce page url */
 		if ( class_exists( 'WooCommerce' ) ) {
 			$page_wc_checkout=str_replace( home_url(), '', wc_get_page_permalink( 'checkout' ) );
 			$page_wc_myaccount=str_replace( home_url(), '', wc_get_page_permalink( 'myaccount' ) );
 			$page_wc_cart=str_replace( home_url(), '', wc_get_page_permalink( 'cart' ) );
 			$this->options['nocache_woocommerce_url'] =  '^'.$page_wc_checkout.'|^'.$page_wc_myaccount.'|^'.$page_wc_cart;
-      
+
 		} else {
 			$this->options['nocache_woocommerce_url'] = '';
 		}
-    
+
 		?>
 
 		<div class="wrap">
@@ -790,7 +788,7 @@ class WP_FFPC extends WP_FFPC_ABSTRACT {
 					<?php _e('List of backends, with the following syntax: <br />- in case of TCP based connections, list the servers as host1:port1,host2:port2,... . Do not add trailing , and always separate host and port with : .<br />- for a unix socket enter: unix://[socket_path]', 'wp-ffpc'); ?></span>
 				</dd>
 
-				<h3><?php _e('Authentication ( only for SASL enabled Memcached or Redis)')?></h3>
+				<h3><?php _e('Authentication ( only for SASL enabled Memcached)')?></h3>
 				<?php
 					if ( ! ini_get('memcached.use_sasl') && ( !empty( $this->options['authuser'] ) || !empty( $this->options['authpass'] ) ) ) { ?>
 						<div class="error"><p><strong><?php _e( 'WARNING: you\'ve entered username and/or password for memcached authentication ( or your browser\'s autocomplete did ) which will not work unless you enable memcached sasl in the PHP settings: add `memcached.use_sasl=1` to php.ini' , 'wp-ffpc') ?></strong></p></div>
