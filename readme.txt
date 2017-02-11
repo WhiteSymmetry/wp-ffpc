@@ -3,7 +3,7 @@ Contributors: cadeyrn
 Tags: cache, nginx, memcached, apc
 Requires at least: 3.0
 Tested up to: 4.7.2
-Stable tag: 1.11.1
+Stable tag: 1.11.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -14,7 +14,7 @@ A fast, memory based full page cache plugin supporting APC or memcached.
 **WARNING** The development of WP-FFPC had been put on hold.
 If you need new features, please send code and pull requests to [WP FFPC @ Github](https://github.com/petermolnar/wp-ffpc).
 
-*A short why: I developed this plugin in 2010 to support my own site. Right now, as it is, it's working on a few sites I still maintain for friends and since I don't need any additional features, I'm not planning to extend it with things I have no real use of. During the past years I've received some heartwarning donations - unfortunately the amount never came close to consider the project financially beneficial. I removed the donation links and put it on hold for now.*
+*A short why: I developed this plugin in 2010 to support my own site. Right now, as it is, it's working on a few sites I still maintain for friends and since I don't need any additional features, I'm not planning to extend it with things I have no real use of. During the past years I've received some heartwarming donations - unfortunately the amount never came close to consider the project financially beneficial. I removed the donation links and put it on hold for now.*
 
 
 WP-FFPC is a cache plugin for [WordPress](http://wordpress.org/ "WordPress").
@@ -47,7 +47,7 @@ It can be configured together with [NGiNX](http://NGiNX.org "NGiNX") but use [me
   * memcached with [PHP Memcache](http://php.net/manual/en/book.memcache.php "Memcache")
   * [APC](http://php.net/manual/en/book.apc.php "APC")
   * [APCu](http://pecl.php.net/package/APCu "APC User Cache")
-* cache exclude options ( home, feeds, archieves, pages, singles; regex based url exclusion )
+* cache exclude options ( home, feeds, archives, pages, singles; regex based url exclusion )
 * minor Woocommerce support
 * (optional) cache for logged-in users
 * 404 caching
@@ -124,17 +124,18 @@ Version numbering logic:
 = 1.11.2 =
 *2017-02-08*
 
-* nonexistent redis support removed (it never got to a usable stable state, mostly due to the chaos with the redis php modules)
-* readme cleaned up for development hibernation
-* donation link removed
-* WP version compatibility bumped
+* annoying typos in text
 
 = 1.11.1 =
-*2016-04-21*
+*2017-02-08*
 
 * exclude cache for WooCommerce
 * fix load textdomain
 * add Italian (it_IT) translation
+* nonexistent redis support removed (it never got to a usable stable state, mostly due to the chaos with the redis php modules)
+* readme cleaned up for development hibernation
+* donation link removed
+* WP version compatibility bumped
 
 = 1.11.0 =
 *2016-01-15*
